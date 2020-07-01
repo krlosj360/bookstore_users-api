@@ -3,6 +3,7 @@ package users
 import (
 	"bookstore_users-api/util/errors"
 	"fmt"
+	"time"
 )
 
 var (
@@ -25,11 +26,15 @@ func (user *User) Get() *errors.RestErr {
 func (user *User) Save() *errors.RestErr {
 	current := usersDB[user.Id]
 	if current != nil {
-		if current.Email == user.Email{
+		if current.Email == user.Email {
 			return errors.NewBadRequestError(fmt.Sprintf("email %d already registered", user.Email))
 		}
 		return errors.NewBadRequestError(fmt.Sprintf("user %d already exists", user.Id))
 	}
+
+	now := time.Now()
+	user.DateCreated = now.Format("2019-01-02T15:04:052")
+
 	usersDB[user.Id] = user
 	return nil
 }
