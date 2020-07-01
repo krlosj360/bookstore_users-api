@@ -16,7 +16,8 @@ const (
 )
 
 var (
-	Client   *sql.DB
+	Client *sql.DB
+
 	username = os.Getenv(mysql_users_username)
 	password = os.Getenv(mysql_users_password)
 	host     = os.Getenv(mysql_users_host)
@@ -27,8 +28,7 @@ func init() {
 	dataSourceName := fmt.Sprintf("%s:%s@tcp(%s)/%s?charset=utf8",
 		username, password, host, schema)
 	var err error
-	Client, err := sql.Open("mysql", dataSourceName)
-
+	Client, err = sql.Open("mysql", dataSourceName)
 	if err != nil {
 		panic(err)
 	}
