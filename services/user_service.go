@@ -19,6 +19,7 @@ type userServiceInterface interface {
 	UpdateUser(bool, users.User) (*users.User, *errors.RestErr)
 	DeleteUser(int64) *errors.RestErr
 	SearchUser(string) (users.Users, *errors.RestErr)
+	LoginUser(users.LoginRequest) (*users.User, *errors.RestErr)
 }
 
 func (s *usersService) GetUser(userId int64) (*users.User, *errors.RestErr) {
@@ -35,7 +36,9 @@ func (s *usersService) CreateUser(user users.User) (*users.User, *errors.RestErr
 		return nil, err
 	}
 	user.Status = users.StatusActive
+	//user.BirthDate = date_utils.UnmarshalJSON(user.BirthDate)
 	user.DateCreated = date_utils.GetNowDBFormat()
+	user.DateUpdated = date_utils.GetNowDBFormat()
 	user.Password = crypto_utils.GetMd5(user.Password)
 	if err := user.Save(); err != nil {
 		return nil, err
@@ -67,7 +70,7 @@ func (s *usersService) UpdateUser(isPartial bool, user users.User) (*users.User,
 		current.LastName = user.LastName
 		current.Email = user.Email
 	}
-
+	user.DateUpdated = date_utils.GetNowDBFormat()
 	if err := current.Update(); err != nil {
 		return nil, err
 	}
@@ -84,4 +87,15 @@ func (s *usersService) SearchUser(status string) (users.Users, *errors.RestErr) 
 	dao := &users.User{}
 	return dao.FindByStatus(status)
 
+}
+
+func (s *usersService) LoginUser(request users.LoginRequest) (*users.User, *errors.RestErr) {
+	dao := &users.User{
+		Email:    request.Email,
+		Password: crypto_utils.GetMd5(request.Password),
+	}
+	if err := dao.FindByEmailAndPassword(); err != nil {
+		return nil, err
+	}
+	return dao, nil
 }
