@@ -2,6 +2,7 @@ package users
 
 import (
 	"bookstore_users-api/domian/users"
+	"bookstore_users-api/logger"
 	"bookstore_users-api/services"
 	"bookstore_users-api/util/errors"
 	"github.com/gin-gonic/gin"
@@ -10,6 +11,7 @@ import (
 )
 
 func getUserId(userIdParam string) (int64, *errors.RestErr) {
+	logger.Info(userIdParam)
 	userId, userErr := strconv.ParseInt(userIdParam, 10, 64)
 	//TODO:Validar si id no es una letra
 	if userErr != nil {
@@ -18,6 +20,22 @@ func getUserId(userIdParam string) (int64, *errors.RestErr) {
 	return userId, nil
 
 }
+
+// CreateUsers godoc
+// @Summary List accounts
+// @Description created users
+// @Produce  json
+// @Param identification query string false "name search by q"
+// @Param first_name query string false "name search by q"
+// @Param last_name query string false "name search by q"
+// @Param birthdate query string false "name search by q"
+// @Param senescyt_id query string false "name search by q"
+// @Param university_title query string false "name search by q"
+// @Param email query string false "name search by q"
+// @Param password query string false "name search by q"
+// @Param agree query bool false "name search by q"
+// @Param role_id query bool false "name search by q"
+// @Router /accounts/users [post]
 func Create(c *gin.Context) {
 	var user users.User
 	if err := c.ShouldBindJSON(&user); err != nil {
@@ -35,6 +53,13 @@ func Create(c *gin.Context) {
 	c.JSON(http.StatusCreated, result.Marshall(c.GetHeader("X-Public") == "true"))
 }
 
+// ShowAccount godoc
+// @Summary user description
+// @Description get  ID
+// @ID get users
+// @Produce  json
+// @Param user_id path int true "Users ID"
+// @Router /accounts/users/{user_id} [get]
 func Get(c *gin.Context) {
 	userId, idErr := getUserId(c.Param("user_id"))
 	if idErr != nil {
