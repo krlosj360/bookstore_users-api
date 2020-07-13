@@ -1,10 +1,10 @@
 package users
 
 import (
-	"bookstore_users-api/datasource/mysql/users_db"
-	"bookstore_users-api/logger"
-	"bookstore_users-api/util/errors"
-	"bookstore_users-api/util/msql_utils"
+	"bookstore_users-api/src/datasource/mysql/users_db"
+	"bookstore_users-api/src/logger"
+	"bookstore_users-api/src/util/errors"
+	"bookstore_users-api/src/util/msql_utils"
 	"fmt"
 	"strings"
 )

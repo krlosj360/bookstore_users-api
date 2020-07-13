@@ -1,9 +1,9 @@
-package app
+package application
 
 import (
-	"bookstore_users-api/controllers/ping"
-	"bookstore_users-api/controllers/users"
-	"bookstore_users-api/docs"
+	"bookstore_users-api/src/controllers/ping"
+	"bookstore_users-api/src/controllers/users"
+	"bookstore_users-api/src/docs"
 	swaggerFiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
 )

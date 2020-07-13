@@ -1,7 +1,7 @@
 package msql_utils
 
 import (
-	"bookstore_users-api/util/errors"
+	"bookstore_users-api/src/util/errors"
 	"fmt"
 	"github.com/go-sql-driver/mysql"
 	"strings"

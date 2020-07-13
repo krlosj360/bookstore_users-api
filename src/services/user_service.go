@@ -1,10 +1,10 @@
 package services
 
 import (
-	"bookstore_users-api/domian/users"
-	"bookstore_users-api/util/crypto_utils"
-	"bookstore_users-api/util/date_utils"
-	"bookstore_users-api/util/errors"
+	"bookstore_users-api/src/domian/users"
+	"bookstore_users-api/src/util/crypto_utils"
+	"bookstore_users-api/src/util/date_utils"
+	"bookstore_users-api/src/util/errors"
 )
 
 var (

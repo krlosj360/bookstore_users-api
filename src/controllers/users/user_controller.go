@@ -1,10 +1,10 @@
 package users
 
 import (
-	"bookstore_users-api/domian/users"
-	"bookstore_users-api/logger"
-	"bookstore_users-api/services"
-	"bookstore_users-api/util/errors"
+	"bookstore_users-api/src/domian/users"
+	"bookstore_users-api/src/logger"
+	"bookstore_users-api/src/services"
+	"bookstore_users-api/src/util/errors"
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"strconv"
@@ -21,20 +21,13 @@ func getUserId(userIdParam string) (int64, *errors.RestErr) {
 
 }
 
-// CreateUsers godoc
-// @Summary List accounts
-// @Description created users
+// AddUser godoc
+// @Summary Add Users
+// @Description add User Register
+// @Tags Users
+// @Accept  json
 // @Produce  json
-// @Param identification query string false "name search by q"
-// @Param first_name query string false "name search by q"
-// @Param last_name query string false "name search by q"
-// @Param birthdate query string false "name search by q"
-// @Param senescyt_id query string false "name search by q"
-// @Param university_title query string false "name search by q"
-// @Param email query string false "name search by q"
-// @Param password query string false "name search by q"
-// @Param agree query bool false "name search by q"
-// @Param role_id query bool false "name search by q"
+// @Param User body model.User true "Add User"
 // @Router /accounts/users [post]
 func Create(c *gin.Context) {
 	var user users.User
@@ -56,6 +49,7 @@ func Create(c *gin.Context) {
 // ShowAccount godoc
 // @Summary user description
 // @Description get  ID
+// @Tags Users
 // @ID get users
 // @Produce  json
 // @Param user_id path int true "Users ID"

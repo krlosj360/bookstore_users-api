@@ -1,7 +1,7 @@
 package users
 
 import (
-	"bookstore_users-api/util/errors"
+	"bookstore_users-api/src/util/errors"
 	"encoding/json"
 	"strings"
 	"time"
