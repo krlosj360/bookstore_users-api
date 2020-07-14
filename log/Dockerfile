@@ -1,10 +1,10 @@
 FROM golang:1.14.4
 
-ENV mysql_users_username="root"
-ENV mysql_users_password ="Medic@gile2020"
-ENV mysql_users_host="45.79.56.138:3306"
-ENV mysql_users_schema="medic_agile"
-ENV REPO_URL=bookstore_users-api
+ENV mysql_users_username = root
+ENV mysql_users_password = Medic@gile2020
+ENV mysql_users_host = 127.0.0.1
+ENV mysql_users_schema = medic_agile
+ENV REPO_URL=app
 
 # Setup out $GOPATH
 ENV GOPATH=/app
@@ -17,7 +17,7 @@ ENV APP_PATH=$GOPATH/src/$REPO_URL
 
 # Copy the entire source code from the current directory to $WORKPATH
 ENV WORKPATH=$APP_PATH/src
-COPY src $WORKPATH
+COPY  $WORKPATH
 WORKDIR $WORKPATH
 
 # Download all the dependencies

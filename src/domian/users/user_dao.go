@@ -46,7 +46,7 @@ func (user *User) Save() *errors.RestErr {
 	insertResult, saveErr := stmt.Exec(user.Identification, user.FirstName, user.LastName, user.BirthDate, user.SenescytId, user.UniversityTitle, user.Email, user.Password, user.Agree, user.Status, user.DateCreated, user.DateUpdated, user.RoleId)
 	if saveErr != nil {
 		fmt.Printf(saveErr.Error())
-		logger.Error("error when trying to prepare save user", err)
+		logger.Error("error when trying to prepare save user", saveErr)
 		return errors.NewInternalServerError("database error")
 	}
 	userId, err := insertResult.LastInsertId()

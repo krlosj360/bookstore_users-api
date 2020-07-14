@@ -1,0 +1,6 @@
+{"level":"info","time":"2020-07-13T22:45:46.130-0500","msg":"Start the aplication ... "}
+{"level":"info","time":"2020-07-13T22:48:37.606-0500","msg":"0"}
+{"level":"error","time":"2020-07-13T22:48:37.638-0500","msg":"error when trying to prepare get user by id","error":"sql: no rows in result set"}
+{"level":"info","time":"2020-07-14T10:46:17.264-0500","msg":"Start the aplication ... "}
+{"level":"info","time":"2020-07-14T10:46:51.886-0500","msg":"Start the aplication ... "}
+{"level":"info","time":"2020-07-14T10:48:43.400-0500","msg":"Start the aplication ... "}
